@@ -11,19 +11,19 @@
         </li>
       </ul>
     </div>
-    <div class="dashboard-content">
-      <div class="dashboard-content-inner">
-        <div class="swiper">
-          <div class="swiper-tools">
-            <a href="#" class="swiper-left">
-              <span class="fas fa-chevron-left fa-fw"></span>
-            </a>
-            <a href="#" class="swiper-right">
-              <span class="fas fa-chevron-right fa-fw"></span>
-            </a>
-          </div>
-          <div id="swipable-cards" class="swiper-content"></div>
+  </div>
+  <div class="dashboard-content">
+    <div class="dashboard-content-inner">
+      <div class="swiper">
+        <div class="swiper-tools">
+          <a href="#" class="swiper-left">
+            <span class="fas fa-chevron-left fa-fw"></span>
+          </a>
+          <a href="#" class="swiper-right">
+            <span class="fas fa-chevron-right fa-fw"></span>
+          </a>
         </div>
+        <div id="swipable-cards" class="swiper-content"></div>
       </div>
     </div>
   </div>

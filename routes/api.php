@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('api')->get('test', 'ApiController@test');
+
+Route::middleware('api')->post('applicants', 'ApiController@post_applicants');
+Route::middleware('api')->post('employers', 'ApiController@post_employers');
+Route::middleware('api')->post('swipe', 'ApiController@post_swipe');

@@ -1,0 +1,47 @@
+.swiper {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.swiper > .swiper-tools {
+  display: inline-flex;
+  flex-direction: row;
+  position: absolute;
+  top: 50%;
+  margin-top: -1.5rem;
+  height: 4rem;
+  width: 80%;
+}
+
+.swiper > .swiper-tools > .swiper-left,
+.swiper > .swiper-tools > .swiper-right {
+  background-color: #fff;
+  border-radius: 4rem;
+  box-shadow: 0 2px 4px rgba(34, 34, 34, 0.2);
+  color: #222;
+  display: inline-block;
+  height: 4rem;
+  width: 4rem;
+}
+
+.swiper > .swiper-tools > .swiper-right {
+  margin-left: auto;
+}
+
+.swiper > .swiper-content {
+  display: inline-block;
+  width: 60%;
+}
+
+.swiper > .swiper-content > .card {
+  display: none;
+}
+
+.swiper > .swiper-content > .card.active {
+  display: flex;
+}

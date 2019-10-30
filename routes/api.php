@@ -13,7 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/applicants', 'ApiController@applicants');
-Route::middleware('auth:api')->get('/employers', 'ApiController@employers');
+Route::middleware('api')->get('test', 'ApiController@test');
 
-Route::middleware('auth:api')->post('/swipe', 'ApiController@post_swipe');
+Route::middleware('api')->post('applicants', 'ApiController@post_applicants');
+Route::middleware('api')->post('employers', 'ApiController@post_employers');
+Route::middleware('api')->post('swipe', 'ApiController@post_swipe');

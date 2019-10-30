@@ -24,5 +24,17 @@ class UserSeeder extends Seeder
         $user1->sex = 'Male';
 
         $user1->save();
+
+        $user2 = new Users;
+
+        $user2->mobile_number = '9068490198';
+        $user2->password = bcrypt('Nani');
+        $user2->first_name = 'Mack Perry';
+        $user2->last_name = 'Co';
+        $user2->birth_date = '2000-09-11';
+        $user2->type = 'Administrator';
+        $user2->sex = 'Male';
+
+        $user2->save();
     }
 }

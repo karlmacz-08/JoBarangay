@@ -45,6 +45,16 @@ class Users extends Authenticatable
 
     public function skills()
     {
-      return $this->hasMany('App\Skillsets', 'user_id', 'id');
+        return $this->hasMany('App\Skillsets', 'user_id', 'id');
+    }
+
+    public function swipes()
+    {
+        return $this->hasMany('App\Swipes', 'swiper_id', 'id');
+    }
+
+    public function swipe_by()
+    {
+        return $this->hasMany('App\Swipes', 'target_user_id', 'id');
     }
 }

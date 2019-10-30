@@ -18,7 +18,6 @@
 	</div>
 	<div class="dashboard-content">
 		<div class="dashboard-content-inner">
-			@foreach()
 			<a href="#" style="text-decoration: none;">
 				<div class="box" style="margin-bottom: 10px">
 					<article class="media">

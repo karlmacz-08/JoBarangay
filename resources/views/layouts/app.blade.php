@@ -12,6 +12,7 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/backdrop.css') }}">
   @yield('styles')
 </head>
 <body>

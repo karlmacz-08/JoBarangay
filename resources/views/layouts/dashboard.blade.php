@@ -6,6 +6,7 @@
   <title>{{ config('app.name') }}</title>
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/backdrop.css') }}">
   <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <script>
     $(document).ready(function() {
@@ -16,11 +17,11 @@
       });
     });
   </script>
-@yield('resources')
+  @yield('resources')
 </head>
 <body>
-@yield('content')
-@yield('modals')
+  @yield('content')
+  @yield('modals')
   <form id="logout-form" action="{{ route('logout') }}" method="POST">
     {{ csrf_field() }}
   </form>

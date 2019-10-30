@@ -29,7 +29,8 @@ class ApiController extends Controller
       foreach($applicants as $applicant) {
         foreach($applicant->swipe_by as $swipe_by) {
           if($swipe_by->swiper_id !== $id) {
-            $swipables[] = $applicants;
+            $applicant['fn'] = $applicant->full_name();
+            $swipables[] = $applicant;
           }
         }
       }
@@ -50,6 +51,7 @@ class ApiController extends Controller
       foreach($employers as $employer) {
         foreach($employer->swipes as $swipe) {
           if($swipe->target_user_id !== $id) {
+            $employer['fn'] = $employer->full_name();
             $swipables[] = $employer;
           }
         }

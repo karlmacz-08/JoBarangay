@@ -57,56 +57,61 @@
               $('#swipable-cards').html('');
 
               for(var i = 0; i < response.length; i++) {
-                $('#swipable-cards').append('<div class="card' + (i === 0 ? ' active' : '') + '">\
-                    <div class="card-header justify-content-center">\
-                      <h5 class="card-title display-4">RESUMÉ</h5>\
-                    </div>\
-                    <div class="card-body">\
-                      <form class="container">\
-                        <fieldset disabled>\
+                $('#swipable-cards').append('<div class="swiper-item' + (i === 0 ? ' active' : '') + '">\
+                    <div class="card">\
+                      <div class="card-body">\
+                        <div class="media">\
+                          <img src="/uploads/' +  + '" class="mr-3">\
+                          <div class="media-body">\
+                            <h5 class="mt-0">' + response.fn + '</h5>\
+                          </div>\
+                        </div>\
+                        <form class="container">\
+                          <fieldset disabled>\
+                            <div class="form-group row">\
+                              <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">BUONG PANGALAN</label>\
+                              <div class="col-md-9">\
+                                <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
+                              </div>\
+                            </div>\
+                            <div class="form-group row">\
+                              <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">KAARAWAN</label>\
+                              <div class="col-md-9">\
+                                <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
+                              </div>\
+                            </div>\
+                          </fieldset>\
                           <div class="form-group row">\
-                            <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">BUONG PANGALAN</label>\
+                            <label class="col-md-3 col-form-label col-form-label-md" for="eduklvl">ANTAS NG EDUKASYON</label>\
+                              <div class="col-md-9 mt-2">\
+                              <select class="custom-select" id="eduklvl">\
+                                <option selected>...</option>\
+                                <option value="1" >Elementary</option>\
+                                <option value="2">High School</option>\
+                                <option value="3">College</option>\
+                                <option value="4">Wala sa nabanggit</option>\
+                              </select>\
+                            </div>\
+                          </div>\
+                          <div class="form-group row" id="degree">\
+                            <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">TINAPOS NA KURSO</label>\
                             <div class="col-md-9">\
                               <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
                             </div>\
                           </div>\
-                          <div class="form-group row">\
-                            <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">KAARAWAN</label>\
-                            <div class="col-md-9">\
-                              <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
+                          <div class="row">\
+                            <div class="col-md-3">\
+                              <p>SKILLS:</p>\
+                            </div>\
+                            <div class="input-group col-md-9 mb-3">\
+                              <input type="text" class="form-control" placeholder="KAKAYAHAN" aria-label="KAKAYAHAN" aria-describedby="KAKAYAHAN">\
+                              <div class="input-group-append">\
+                                <button class="btn btn-primary" type="button">MAGDAGDAG</button>\
+                              </div>\
                             </div>\
                           </div>\
-                        </fieldset>\
-                        <div class="form-group row">\
-                          <label class="col-md-3 col-form-label col-form-label-md" for="eduklvl">ANTAS NG EDUKASYON</label>\
-                            <div class="col-md-9 mt-2">\
-                            <select class="custom-select" id="eduklvl">\
-                              <option selected>...</option>\
-                              <option value="1" >Elementary</option>\
-                              <option value="2">High School</option>\
-                              <option value="3">College</option>\
-                              <option value="4">Wala sa nabanggit</option>\
-                            </select>\
-                          </div>\
-                        </div>\
-                        <div class="form-group row" id="degree">\
-                          <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">TINAPOS NA KURSO</label>\
-                          <div class="col-md-9">\
-                            <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
-                          </div>\
-                        </div>\
-                        <div class="row">\
-                          <div class="col-md-3">\
-                            <p>SKILLS:</p>\
-                          </div>\
-                          <div class="input-group col-md-9 mb-3">\
-                            <input type="text" class="form-control" placeholder="KAKAYAHAN" aria-label="KAKAYAHAN" aria-describedby="KAKAYAHAN">\
-                            <div class="input-group-append">\
-                              <button class="btn btn-primary" type="button">MAGDAGDAG</button>\
-                            </div>\
-                          </div>\
-                        </div>\
-                      </form>\
+                        </form>\
+                      </div>\
                     </div>\
                   </div>');
               }

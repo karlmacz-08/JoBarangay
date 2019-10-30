@@ -35,13 +35,14 @@
 
 .swiper > .swiper-content {
   display: inline-block;
+  position: relative;
   width: 60%;
 }
 
-.swiper > .swiper-content > .card {
+.swiper > .swiper-content > .swiper-item {
   display: none;
 }
 
-.swiper > .swiper-content > .card.active {
-  display: flex;
+.swiper > .swiper-content > .swiper-item.active {
+  display: inline-block;
 }

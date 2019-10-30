@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
   <link rel="shortcut icon" href="{{ asset('images/JB_Logo.PNG') }}">
   <link rel="stylesheet" href="{{ asset('css/backdrop.css') }}">
+  @yield('styles')
   <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <script>
     $(document).ready(function() {

@@ -25,4 +25,9 @@ class DashboardController extends Controller
   {
     return view('dashboard.matches');
   }
+
+  public function resume()
+  {
+    return view('dashboard.resume');
+  }
 }

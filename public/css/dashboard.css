@@ -1,5 +1,6 @@
 html.dashy {
   height: 100%;
+  overflow: auto;
 }
 
 html.dashy > body {

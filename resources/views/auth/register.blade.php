@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
   <div class="row">
@@ -48,6 +52,20 @@
                 @if ($errors->has('last_name'))
                 <span class="help-block">
                   <strong>{{ $errors->first('last_name') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
+              <label for="birth_date" class="col-md-4 control-label">Birth Date</label>
+
+              <div class="col-md-6">
+                <input id="birth_date" class="form-control" type="text" autocomplete="off" name="birth_date" value="{{ old('birth_date') }}" required autofocus>
+
+                @if ($errors->has('birth_date'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('birth_date') }}</strong>
                 </span>
                 @endif
               </div>
@@ -116,4 +134,9 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/register.js') }}"></script>
 @endsection

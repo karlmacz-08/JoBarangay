@@ -21,6 +21,7 @@ class Users extends Authenticatable
         'middle_name',
         'last_name',
         'birth_date',
+        'type',
         'sex',
     ];
 

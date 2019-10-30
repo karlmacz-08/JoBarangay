@@ -41,4 +41,9 @@ class User extends Authenticatable
             return $this->first_name . ' ' . $this->last_name;
         }
     }
+
+    public function skills()
+    {
+      return $this->hasMany('App\Skillsets', 'user_id', 'id');
+    }
 }

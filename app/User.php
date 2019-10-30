@@ -15,7 +15,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'mobile_number',
+        'password',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'birth_date',
+        'sex',
     ];
 
     /**
@@ -24,6 +30,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'confirmation',
     ];
+
+    public function full_name()
+    {
+        if($this->middle_name !== null && $this->middle_name !== '') {
+            return $this->first_name . ' ' . substr($this->middle_name, 0, 1) . '. ' . $this->last_name;
+        } else {
+            return $this->first_name . ' ' . $this->last_name;
+        }
+    }
 }

@@ -24,37 +24,32 @@
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="form-group">
-									<label for="name">Full Name:</label>
+									<label for="name">Buong Pangalan:</label>
 									<input id="name" class="form-control" type="text" value="Eloquent" readonly>
 								</div>
 
 								<div class="form-group">
-									<label for="mobile">Mobile Number:</label>
+									<label for="mobile">Cellphone Number:</label>
 									<input id="mobile" class="form-control" type="number" value="Eloquent" readonly>
 								</div>
 
 								<div class="form-group">
-									<label for="birth">Birth Date:</label>
+									<label for="birth">Kaarawan:</label>
 									<input id="birth" class="form-control" type="text" value="Eloquent" readonly>
 								</div>
 
 								<div class="form-group">
-									<label for="email">E-mail Address:</label>
-									<input id="email" class="form-control" type="text" value="Eloquent" readonly>
-								</div>
-
-								<div class="form-group">
-									<label for="add">Address:</label>
+									<label for="add">Tirahan:</label>
 									<textarea id="add" class="form-control" name="address" cols="30" rows="2"></textarea>
 								</div>
 
 								<div class="form-group">
-									<label for="educ">Educational Attainment:</label>
+									<label for="educ">Antas ng Edukasyon:</label>
 									<select class="custom-select" id="eduklvl">
 										<option selected value="0">...</option>
 										<option value="1" >Elementary</option>
-										<option value="2">High School</option>
-										<option value="3">College</option>
+										<option value="2">Hayskul</option>
+										<option value="3">Kolehiyo</option>
 										<option value="4">Wala sa nabanggit</option>
 									</select>
 								</div>
@@ -65,7 +60,7 @@
 								</div>
 
 								<div class="form-group">
-									<label for="skills">Skills:</label>
+									<label for="skills">Kasanayan (Skills):</label>
 									<input id="skills" class="form-control" type="text" name="skills" value="">
 								</div>
 							</div>
@@ -79,16 +74,16 @@
 												<i class="fas fa-upload"></i>
 											</span>
 											<span class="file-label">
-												Choose a file...
+												Pumili ng isang file...
 											</span>
 										</span>
 										<span class="file-name">
-											No file uploaded
+											Walang nai-upload na file.
 										</span>
 									</label>
 								</div>
-								<button class="btn btn-block btn-primary">Submit</button>
-								<a class="btn btn-block btn-danger" style="color: white">Cancel</a>
+								<button class="btn btn-block btn-primary">Ipasa</button>
+								<a class="btn btn-block btn-danger" style="color: white">Kanselahin</a>
 							</div>
 						</div>
 					</form>

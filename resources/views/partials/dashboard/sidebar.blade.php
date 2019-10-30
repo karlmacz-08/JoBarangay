@@ -10,7 +10,7 @@
     <a class="nav-link" @if(Request::is('dashboard/home')) style="color: black" @endif href="{{ route('dashboard.home') }}">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" @if(Request::is('dashboard/matches')) style="color: black" @endif href="{{ route('dashboard.matches') }}">Matches</a>
+    <a class="nav-link" @if(Request::is('dashboard/matches')) style="color: black" @endif href="{{ route('dashboard.matches') }}">Tugma</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" @if(Request::is('dashboard/resume')) style="color: black" @endif href="{{ route('dashboard.resume') }}">Resume</a>

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
+@endsection
+
 @section('content')
 <div class="container">
   <div class="row">
@@ -10,6 +14,21 @@
         <div class="panel-body">
           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
+
+            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+              <label for="type" class="col-md-4 control-label">Type</label>
+
+              <div class="col-md-6">
+                <input type="radio" class="type form-control" name="type" value="Applicant" required autofocus><label>Applicant</label>
+                <input type="radio" class="type form-control" name="type" value="Employer" required autofocus><label>Employer</label>
+
+                @if ($errors->has('type'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('type') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
 
             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
               <label for="first_name" class="col-md-4 control-label">First Name</label>
@@ -48,6 +67,35 @@
                 @if ($errors->has('last_name'))
                 <span class="help-block">
                   <strong>{{ $errors->first('last_name') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
+              <label for="birth_date" class="col-md-4 control-label">Birth Date</label>
+
+              <div class="col-md-6">
+                <input id="birth_date" class="form-control" type="text" autocomplete="off" name="birth_date" value="{{ old('birth_date') }}" required autofocus>
+
+                @if ($errors->has('birth_date'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('birth_date') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+              <label for="sex" class="col-md-4 control-label">Sex</label>
+
+              <div class="col-md-6">
+                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Male" autofocus><label>Male</label><br>
+                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Female" autofocus><label>Female</label><br>
+
+                @if ($errors->has('sex'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('sex') }}</strong>
                 </span>
                 @endif
               </div>
@@ -116,4 +164,9 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/register.js') }}"></script>
 @endsection

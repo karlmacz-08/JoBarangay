@@ -33,7 +33,7 @@ class Users extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'confirmation',
+        'password', 'remember_token', 'password_confirmation',
     ];
 
     public function full_name()

@@ -20,4 +20,14 @@ class DashboardController extends Controller
   {
     return view('dashboard.home');
   }
+
+  public function matches()
+  {
+    return view('dashboard.matches');
+  }
+
+  public function resume()
+  {
+    return view('dashboard.resume');
+  }
 }

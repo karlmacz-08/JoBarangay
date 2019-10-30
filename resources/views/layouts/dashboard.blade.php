@@ -7,7 +7,13 @@
   <title>{{ config('app.name') }}</title>
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+<<<<<<< HEAD
   <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
+=======
+  <link rel="shortcut icon" href="{{ asset('images/JB_Logo.PNG') }}">
+  <link rel="stylesheet" href="{{ asset('css/backdrop.css') }}">
+  @yield('styles')
+>>>>>>> 0c7cf1d1b818ed3cb8e2f41fc3b3aa6a6d66cd45
   <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
   <script>
     $(document).ready(function() {
@@ -18,11 +24,11 @@
       });
     });
   </script>
-@yield('resources')
+  @yield('resources')
 </head>
 <body>
-@yield('content')
-@yield('modals')
+  @yield('content')
+  @yield('modals')
   <form id="logout-form" action="{{ route('logout') }}" method="POST">
     {{ csrf_field() }}
   </form>

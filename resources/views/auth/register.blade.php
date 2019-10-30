@@ -10,17 +10,17 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">Register</div>
+        <div class="panel-heading"><h3>Rehistro</h3></div>
 
         <div class="panel-body">
           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
             <div class="form-group radio-form{{ $errors->has('type') ? ' has-error' : '' }}">
-              <label for="type" class="col-md-4 control-label">Type</label>
+              <label for="type" class="col-md-4 control-label">Klase</label>
 
               <div class="col-md-6">
-                <input id="app" class="type" type="radio" name="type" value="Applicant" required autofocus>Applicant<span class="split"></span>
+                <input id="app" class="type" type="radio" name="type" value="Applicant" required autofocus>Aplikante<span class="split"></span>
                 <input id="emp" class="type" type="radio" name="type" value="Employer" required autofocus>Employer<br>
 
                 @if ($errors->has('type'))
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-              <label for="first_name" class="col-md-4 control-label">First Name</label>
+              <label for="first_name" class="col-md-4 control-label">Pangalan</label>
 
               <div class="col-md-6">
                 <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -46,7 +46,7 @@
             </div>
             
             <div class="form-group{{ $errors->has('middle_name') ? ' has-error' : '' }}">
-              <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
+              <label for="middle_name" class="col-md-4 control-label">Gitnang Pangalan</label>
 
               <div class="col-md-6">
                 <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}" autofocus>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-              <label for="last_name" class="col-md-4 control-label">Last Name</label>
+              <label for="last_name" class="col-md-4 control-label">Apelyido</label>
 
               <div class="col-md-6">
                 <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
@@ -74,10 +74,10 @@
             </div>
 
             <div class="form-group{{ $errors->has('birth_date') ? ' has-error' : '' }}">
-              <label for="birth_date" class="col-md-4 control-label">Birth Date</label>
+              <label for="birth_date" class="col-md-4 control-label">Kaarawan</label>
 
               <div class="col-md-6">
-                <input id="birth_date" class="form-control" type="text" autocomplete="off" name="birth_date" value="{{ old('birth_date') }}" required autofocus>
+                <input id="birth_date" class="form-control" type="text" autocomplete="off" name="birth_date" value="{{ old('birth_date') }}" placeholder="ex. January 1, 1650" required autofocus>
 
                 @if ($errors->has('birth_date'))
                 <span class="help-block">
@@ -88,11 +88,11 @@
             </div>
 
             <div class="form-group radio-form{{ $errors->has('sex') ? ' has-error' : '' }}">
-              <label for="sex" class="col-md-4 control-label">Sex</label>
+              <label for="sex" class="col-md-4 control-label">Kasarian</label>
 
               <div class="col-md-6">
-                <input class="sex" type="radio" autocomplete="off" name="sex" value="Male" required autofocus>Male<span class="split"></span>
-                <input class="sex" type="radio" autocomplete="off" name="sex" value="Female" required autofocus>Female<br>
+                <input class="sex" type="radio" autocomplete="off" name="sex" value="Male" required autofocus>Lalaki<span class="split"></span>
+                <input class="sex" type="radio" autocomplete="off" name="sex" value="Female" required autofocus>Babae<br>
 
                 @if ($errors->has('sex'))
                 <span class="help-block">
@@ -106,7 +106,7 @@
               <label for="mobile_number" class="col-md-4 control-label">Mobile Number</label>
 
               <div class="col-md-6">
-                <input id="mobile_number" type="text" class="form-control" name="mobile_number" value="{{ old('mobile_number') }}" required autofocus>
+                <input id="mobile_number" type="text" class="form-control" name="mobile_number" value="{{ old('mobile_number') }}" placeholder="0906 XXX XXXX" required autofocus>
 
                 @if ($errors->has('mobile_number'))
                 <span class="help-block">
@@ -120,7 +120,7 @@
               <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
               <div class="col-md-6">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="example@hotspot.com">
 
                 @if ($errors->has('email'))
                 <span class="help-block">
@@ -145,7 +145,7 @@
             </div>
 
             <div class="form-group">
-              <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+              <label for="password-confirm" class="col-md-4 control-label">Kumpirmahin ang Password</label>
 
               <div class="col-md-6">
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -155,7 +155,7 @@
             <div class="form-group">
               <div class="col-md-6 col-md-offset-4">
                 <button type="submit" class="btn btn-primary">
-                  Register
+                  Rehistro
                 </button>
               </div>
             </div>

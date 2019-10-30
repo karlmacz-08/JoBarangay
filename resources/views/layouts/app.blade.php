@@ -12,6 +12,8 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ asset('images/JB_Logo.PNG') }}">
+  <link rel="stylesheet" href="{{ asset('css/backdrop.css') }}">
   @yield('styles')
 </head>
 <body>
@@ -28,7 +30,9 @@
         </button>
 
         <!-- Branding Image -->
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="{{ url('/') }}" style="padding-top: 5px;">
+
+          <img src="{{ asset('images/JB_Logo.PNG') }}" alt="JoBarangay Logo" height="40" width="40" style="display: inline-block; margin-right: 5px;">
           {{ config('app.name', 'JoBarangay') }}
         </a>
       </div>
@@ -44,7 +48,7 @@
           <!-- Authentication Links -->
           @if (Auth::guest())
           <li><a href="{{ route('login') }}">Login</a></li>
-          <li><a href="{{ route('register') }}">Register</a></li>
+          <li><a href="{{ route('register') }}">Rehistro</a></li>
           @else
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

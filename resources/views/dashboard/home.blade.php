@@ -17,10 +17,10 @@
       <div class="swiper">
         <div class="swiper-tools">
           <a href="#" class="swiper-left">
-            <span class="fas fa-chevron-left fa-fw"></span>
+            <span class="fas fa-times fa-2x fa-fw"></span>
           </a>
           <a href="#" class="swiper-right">
-            <span class="fas fa-chevron-right fa-fw"></span>
+            <span class="fas fa-check fa-2x fa-fw"></span>
           </a>
         </div>
         <div id="swipable-cards" class="swiper-content"></div>
@@ -44,8 +44,7 @@
         $.ajax({
           url: '/api/' + what,
           headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-            'Content-Type': 'application/json'
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           method: 'POST',
           data: {
@@ -57,68 +56,27 @@
               $('#swipable-cards').html('');
 
               for(var i = 0; i < response.length; i++) {
-                $('#swipable-cards').append('<div class="swiper-item' + (i === 0 ? ' active' : '') + '">\
+                $('#swipable-cards').append('<div class="swiper-item' + (i === 0 ? ' active' : '') + '" data-var-id="' + response[i].id + '">\
                     <div class="card">\
                       <div class="card-body">\
-                        <div class="media">\
-                          <img src="/uploads/' +  + '" class="mr-3">\
-                          <div class="media-body">\
-                            <h5 class="mt-0">' + response.fn + '</h5>\
+                        <div class="profiler">\
+                          <img src="/images/avatar.png" class="profiler-img">\
+                          <div class="profiler-content">\
+                            <h3 class="my-0">' + response[i].fn + '</h3>\
+                            <h6 class="mt-0">' + response[i].company + '</h6>\
                           </div>\
                         </div>\
-                        <form class="container">\
-                          <fieldset disabled>\
-                            <div class="form-group row">\
-                              <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">BUONG PANGALAN</label>\
-                              <div class="col-md-9">\
-                                <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
-                              </div>\
-                            </div>\
-                            <div class="form-group row">\
-                              <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">KAARAWAN</label>\
-                              <div class="col-md-9">\
-                                <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
-                              </div>\
-                            </div>\
-                          </fieldset>\
-                          <div class="form-group row">\
-                            <label class="col-md-3 col-form-label col-form-label-md" for="eduklvl">ANTAS NG EDUKASYON</label>\
-                              <div class="col-md-9 mt-2">\
-                              <select class="custom-select" id="eduklvl">\
-                                <option selected>...</option>\
-                                <option value="1" >Elementary</option>\
-                                <option value="2">High School</option>\
-                                <option value="3">College</option>\
-                                <option value="4">Wala sa nabanggit</option>\
-                              </select>\
-                            </div>\
-                          </div>\
-                          <div class="form-group row" id="degree">\
-                            <label for="colFormLabelmd" class="col-md-3 col-form-label col-form-label-md">TINAPOS NA KURSO</label>\
-                            <div class="col-md-9">\
-                              <input type="text" class="form-control form-control-md" id="colFormLabelmd" placeholder="">\
-                            </div>\
-                          </div>\
-                          <div class="row">\
-                            <div class="col-md-3">\
-                              <p>SKILLS:</p>\
-                            </div>\
-                            <div class="input-group col-md-9 mb-3">\
-                              <input type="text" class="form-control" placeholder="KAKAYAHAN" aria-label="KAKAYAHAN" aria-describedby="KAKAYAHAN">\
-                              <div class="input-group-append">\
-                                <button class="btn btn-primary" type="button">MAGDAGDAG</button>\
-                              </div>\
-                            </div>\
-                          </div>\
-                        </form>\
+                        <div class="text-justify">\
+                          <h5>Looking for:</h5>\
+                          <ul>\
+                            <li>Test</li>\
+                          </ul>\
+                        </div>\
                       </div>\
                     </div>\
                   </div>');
               }
             }
-          },
-          error: function(arg0, arg1, arg2) {
-            console.log(arg0.responseText);
           }
         });
       }
@@ -129,8 +87,48 @@
         loadSwipeCards();
       });
 
-      $('body').on('click', '.swipe-right', function() {
+      $('body').on('click', '.swiper-left', function() {
+        var swiper = $(this).closest('.swiper');
+        var targetElement = swiper.find('.swiper-item.active');
 
+        targetElement.remove();
+        swiper.find('.swiper-item').eq(0).addClass('active');
+
+        return false;
+      });
+
+      $('body').on('click', '.swiper-right', function() {
+        var swiper = $(this).closest('.swiper');
+        var targetElement = swiper.find('.swiper-item.active');
+
+        console.log(targetElement.attr('data-var-id'));
+
+        $.ajax({
+          url: '/api/swipe',
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          method: 'POST',
+          data: {
+            swiper_id: '{{ Auth::user()->id }}',
+            target_user_id: targetElement.attr('data-var-id')
+          },
+          dataType: 'json',
+          success: function(response) {
+            console.log(response);
+
+            if(response.status === 'ok') {
+              if(response.message === 'It\'s a match!') {
+                alert(response.message);
+              }
+
+              targetElement.remove();
+              swiper.find('.swiper-item').eq(0).addClass('active');
+            }
+          }
+        });
+
+        return false;
       });
     });
   </script>

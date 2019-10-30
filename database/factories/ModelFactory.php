@@ -50,12 +50,19 @@ $factory->defineAs(App\Users::class, 'employers', function (Faker\Generator $fak
         'last_name' => $faker->lastName,
         'birth_date' => $faker->dateTimeThisCentury->format('Y-m-d'),
         'sex' => $sex,
-        'type' => 'Employer'
+        'type' => 'Employer',
+        'company' => 'Sample Impact'
     ];
 });
 
 $factory->defineAs(App\Users::class, 'applicants', function (Faker\Generator $faker) {
     $sex = mt_rand(0, 9) % 2 === 0 ? 'Male' : 'Female';
+    $educational_attainment = [
+        'Elementary Graduate',
+        'High School Graduate',
+        'College Graduate',
+        'Other'
+    ];
 
     return [
         'mobile_number' => $faker->numerify(mobileFormat()),
@@ -66,6 +73,7 @@ $factory->defineAs(App\Users::class, 'applicants', function (Faker\Generator $fa
         'last_name' => $faker->lastName,
         'birth_date' => $faker->dateTimeThisCentury->format('Y-m-d'),
         'sex' => $sex,
-        'type' => 'Applicant'
+        'type' => 'Applicant',
+        'educational_attainment' => $educational_attainment[mt_rand(0, 3)]
     ];
 });

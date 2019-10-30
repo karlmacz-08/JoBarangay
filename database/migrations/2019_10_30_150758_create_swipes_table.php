@@ -15,11 +15,10 @@ class CreateSwipesTable extends Migration
     {
         Schema::create('swipes', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('swiper_id')->unsigned();
+            $table->integer('swiper_id')->unsigned()->nullable();
             $table->foreign('swiper_id')->references('id')->on('users');
-            $table->integer('target_user_id')->unsigned();
+            $table->integer('target_user_id')->unsigned()->nullable();
             $table->foreign('target_user_id')->references('id')->on('users');
-            $table->tinyInteger('action');
             $table->timestamps();
         });
     }

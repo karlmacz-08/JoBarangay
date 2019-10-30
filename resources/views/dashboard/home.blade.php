@@ -3,27 +3,18 @@
 @section('content')
   <div class="dashboard">
     <div class="dashboard-sidebar">
-      @yield('partials.dashboard.sidebar')
+      @include('partials.dashboard.sidebar')
+      <div class="dashboard-sidebar-bottom">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="logout-button nav-link" href="#">Log Out</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="dashboard-content">
-      <div class="navbar">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarMenu">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">{{ Auth::user()->full_name() }}</a>
-              <div class="dropdown-menu">
-                <a class="logout-button dropdown-item" href="#">Log Out</a>
-              </div>
-            </li>
-          </ul>
-        </div>
+      <div class="dashboard-content-inner">
       </div>
-      <div class="dashboard-content-inner"></div>
     </div>
   </div>
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('styles')
+<link rel="stylesheet" href="{{ asset('css/register.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
 @endsection
 
@@ -15,12 +16,12 @@
           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
             {{ csrf_field() }}
 
-            <div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+            <div class="form-group radio-form{{ $errors->has('type') ? ' has-error' : '' }}">
               <label for="type" class="col-md-4 control-label">Type</label>
 
               <div class="col-md-6">
-                <input type="radio" class="type form-control" name="type" value="Applicant" required autofocus><label>Applicant</label>
-                <input type="radio" class="type form-control" name="type" value="Employer" required autofocus><label>Employer</label>
+                <input id="app" class="type" type="radio" name="type" value="Applicant" required autofocus>Applicant<span class="split"></span>
+                <input id="emp" class="type" type="radio" name="type" value="Employer" required autofocus>Employer<br>
 
                 @if ($errors->has('type'))
                 <span class="help-block">
@@ -48,7 +49,7 @@
               <label for="middle_name" class="col-md-4 control-label">Middle Name</label>
 
               <div class="col-md-6">
-                <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}" required autofocus>
+                <input id="middle_name" type="text" class="form-control" name="middle_name" value="{{ old('middle_name') }}" autofocus>
 
                 @if ($errors->has('middle_name'))
                 <span class="help-block">
@@ -86,12 +87,12 @@
               </div>
             </div>
 
-            <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+            <div class="form-group radio-form{{ $errors->has('sex') ? ' has-error' : '' }}">
               <label for="sex" class="col-md-4 control-label">Sex</label>
 
               <div class="col-md-6">
-                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Male" autofocus><label>Male</label><br>
-                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Female" autofocus><label>Female</label><br>
+                <input class="sex" type="radio" autocomplete="off" name="sex" value="Male" required autofocus>Male<span class="split"></span>
+                <input class="sex" type="radio" autocomplete="off" name="sex" value="Female" required autofocus>Female<br>
 
                 @if ($errors->has('sex'))
                 <span class="help-block">

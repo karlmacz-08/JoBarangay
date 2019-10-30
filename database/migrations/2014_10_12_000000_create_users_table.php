@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
       $table->string('last_name');
       $table->date('birth_date');
       $table->string('sex');
+      $table->string('type');
       $table->string('confirmation_code')->nullable();
       $table->timestamps();
     });

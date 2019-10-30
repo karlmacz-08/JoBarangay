@@ -72,10 +72,11 @@
             </div>
 
             <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
-              <label for="sex" class="col-md-4 control-label">Birth Date</label>
+              <label for="sex" class="col-md-4 control-label">Sex</label>
 
               <div class="col-md-6">
-                
+                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Male" autofocus><label>Male</label>
+                <input class="sex form-control" type="radio" autocomplete="off" name="sex" value="Female" autofocus><label>Female</label>
 
                 @if ($errors->has('sex'))
                 <span class="help-block">

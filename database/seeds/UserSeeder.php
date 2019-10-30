@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user1 = new User;
+        $user1 = new Users;
 
         $user1->mobile_number = '9068563348';
         $user1->password = bcrypt('kawaii');

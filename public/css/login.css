@@ -1,0 +1,11 @@
+#ui{
+	margin: 150px 50px 0 50px;
+	padding: 50px;
+	width: 70vw;
+	background-color: #bdc3c7;
+	border-radius: 14px;
+}
+
+#login-form {
+	margin-top: 20vh;
+}

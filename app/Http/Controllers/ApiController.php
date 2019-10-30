@@ -27,9 +27,9 @@ class ApiController extends Controller
 
     if($applicants->count() > 0) {
       foreach($applicants as $applicant) {
-        if($applicant->swipes->count() > 0) {
-          foreach($applicant->swipes as $swipe) {
-            if($swipe->target_user_id != $id) {
+        if($applicant->swipe_by->count() > 0) {
+          foreach($applicant->swipe_by as $swipe) {
+            if($swipe->swiper_id != $id) {
               $applicant['fn'] = $applicant->full_name();
               $swipables[] = $applicant;
             }

@@ -13,6 +13,7 @@
   @yield('styles')
   <link rel="stylesheet" href="{{ asset('css/swiper.css') }}">
   <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+  <script src="{{ asset('js/sweetalert2.all.min.js') }}"></script>
   @yield('scripts')
   <script>
     $(document).ready(function() {

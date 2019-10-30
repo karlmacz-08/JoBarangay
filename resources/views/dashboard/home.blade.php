@@ -119,7 +119,11 @@
 
             if(response.status === 'ok') {
               if(response.message === 'It\'s a match!') {
-                alert(response.message);
+                Swal.fire(
+                  'Congratulations!',
+                  response.message,
+                  'success'
+                );
               }
 
               targetElement.remove();

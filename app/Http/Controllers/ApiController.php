@@ -23,19 +23,25 @@ class ApiController extends Controller
 
     $swipables = [];
 
-    $applicants = Users::where('type', 'Applicants')->get();
+    $applicants = Users::where('type', 'Applicant')->get();
 
     if($applicants->count() > 0) {
       foreach($applicants as $applicant) {
-        foreach($applicant->swipe_by as $swipe_by) {
-          if($swipe_by->swiper_id !== $id) {
-            $swipables[] = $applicants;
+        if($applicant->swipe_by->count() > 0) {
+          foreach($applicant->swipe_by as $swipe) {
+            if($swipe->swiper_id != $id) {
+              $applicant['fn'] = $applicant->full_name();
+              $swipables[] = $applicant;
+            }
           }
+        } else {
+          $applicant['fn'] = $applicant->full_name();
+          $swipables[] = $applicant;
         }
       }
     }
 
-    return response()->json($applicants);
+    return response()->json($swipables);
   }
 
   public function post_employers(Request $request)
@@ -48,33 +54,37 @@ class ApiController extends Controller
 
     if($employers->count() > 0) {
       foreach($employers as $employer) {
-        foreach($employer->swipes as $swipe) {
-          if($swipe->target_user_id !== $id) {
-            $swipables[] = $employer;
+        if($employer->swipe_by->count() > 0) {
+          foreach($employer->swipe_by as $swipe) {
+            if($swipe->swiper_id != $id) {
+              $employer['fn'] = $employer->full_name();
+              $swipables[] = $employer;
+            }
           }
+        } else {
+          $employer['fn'] = $employer->full_name();
+          $swipables[] = $employer;
         }
       }
     }
 
-    return response()->json($employers);
+    return response()->json($swipables);
   }
 
   public function post_swipe(Request $request)
   {
     $swiper_id = $request->input('swiper_id');
     $target_user_id = $request->input('target_user_id');
-    $action = $request->input('action');
 
     $swipe = new Swipes;
 
     $swipe->swiper_id = $swiper_id;
     $swipe->target_user_id = $target_user_id;
-    $swipe->action = $action;
 
     if($swipe->save()) {
-      $match = Swipes::where('swiper_id', $swiper_id)->where('target_user_id', $swiper_id)->first();
+      $match = Swipes::where('swiper_id', $target_user_id)->where('target_user_id', $swiper_id)->first();
 
-      if($swipe !== null) {
+      if($match !== null) {
         $response = [
           'status' => 'ok',
           'message' => 'It\'s a match!'

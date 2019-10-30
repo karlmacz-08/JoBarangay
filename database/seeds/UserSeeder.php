@@ -34,6 +34,7 @@ class UserSeeder extends Seeder
         $user2->birth_date = '2000-09-11';
         $user2->type = 'Applicant';
         $user2->sex = 'Male';
+        $user2->educational_attainment = 'College Graduate';
 
         $user2->save();
     }

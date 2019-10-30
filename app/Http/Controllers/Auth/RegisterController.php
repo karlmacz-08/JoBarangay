@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+use App\Users;
 
 class RegisterController extends Controller
 {
@@ -48,9 +49,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'mobile_number' => 'required|digits:10|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|string|min:6',
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'string|nullable|max:255',
+            'last_name' => 'required|string|max:255',
+            'birth_date' => 'required|date',
+            'type' => 'required|string|max:255',
+            'sex' => 'required|string|max:255',
         ]);
     }
 
@@ -62,10 +69,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+        return Users::create([
+            'mobile_number' => $data['mobile_number'],
             'password' => bcrypt($data['password']),
+            'first_name' => $data['first_name'],
+            'middle_name' => $data['middle_name'],
+            'last_name' => $data['last_name'],
+            'birth_date' => date('Y-m-d', strtotime($data['birth_date'])),
+            'type' => $data['type'],
+            'sex' => $data['sex']
         ]);
     }
 }

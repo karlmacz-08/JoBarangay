@@ -71,6 +71,20 @@
               </div>
             </div>
 
+            <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+              <label for="sex" class="col-md-4 control-label">Birth Date</label>
+
+              <div class="col-md-6">
+                
+
+                @if ($errors->has('sex'))
+                <span class="help-block">
+                  <strong>{{ $errors->first('sex') }}</strong>
+                </span>
+                @endif
+              </div>
+            </div>
+
             <div class="form-group{{ $errors->has('mobile_number') ? ' has-error' : '' }}">
               <label for="mobile_number" class="col-md-4 control-label">Mobile Number</label>
 

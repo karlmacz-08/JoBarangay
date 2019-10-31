@@ -21,7 +21,7 @@
 			<div class="card">
 				<div class="container" style="margin-top: 20px">
 					@include('partials.flash')
-					<form action="{{ route('dashboard.resume.update') }}" method="POST">
+					<form action="{{ route('dashboard.resume.update') }}" method="POST" enctype="multipart/form-data">
 						{{ csrf_field() }}
 						<input type="hidden" name="id" value="{{ Auth::user()->id }}">
 						<div class="row">

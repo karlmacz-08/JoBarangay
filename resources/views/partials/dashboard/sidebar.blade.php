@@ -1,7 +1,7 @@
 <ul class="nav flex-column">
   <li class="nav-item">
     <div class="profile">
-      <img src="{{ asset('images/avatar.png') }}" class="profile-img">
+      <img src="{{ asset(Auth::user()->image !== null ? '/uploads/' . Auth::user()->image : 'images/avatar.png') }}" class="profile-img">
       <div class="profile-name">{{ Auth::user()->full_name() }}</div>
       <div class="profile-type">{{ Auth::user()->type }}</div>
     </div>

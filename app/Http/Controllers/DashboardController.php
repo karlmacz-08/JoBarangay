@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use Auth;
 
+use App\Clearances;
 use App\Users;
+use App\Skills;
+use App\Skillsets;
 
 class DashboardController extends Controller
 {
@@ -42,7 +45,11 @@ class DashboardController extends Controller
 
   public function resume()
   {
-    return view('dashboard.resume');
+    $skills = Skills::get();
+
+    return view('dashboard.resume', [
+      'skills' => $skills
+    ]);
   }
 
   /*
@@ -51,5 +58,46 @@ class DashboardController extends Controller
   public function post_update_resume(Request $request)
   {
     $id = $request->input('id');
+    $address = $request->input('address', null);
+    $educational_attainment = $request->input('educational_attainment');
+    $degree = $request->input('degree', null);
+    $skills = $request->input('skills');
+    $clearances = $request->input('clearances', null);
+
+    $user = Users::where('id', $id)->update([
+      'address' => $address,
+      'educational_attainment' => $educational_attainment,
+      'degree' => $degree
+    ]);
+
+    if($user !== null) {
+      if(count($skills) > 0) {
+        foreach($skills as $skill) {
+          Skillsets::insert([
+            'user_id' => $id,
+            'skill_id' => $skill
+          ]);
+        }
+      }
+
+      // if(count($clearances) > 0) {
+      //   foreach($clearances as $clearance) {
+      //     if($clearance != null && $clearance != '') {
+      //       Clearances::insert([
+      //         'user_id' => $id,
+      //         'name' => $clearance
+      //       ]);
+      //     }
+      //   }
+      // }
+
+      session()->flash('flash_status', 'ok');
+      session()->flash('flash_message', 'Resume has been updated.');
+    } else {
+      session()->flash('flash_status', 'fail');
+      session()->flash('flash_message', 'Failed to update resume.');
+    }
+
+    return redirect()->back();
   }
 }

@@ -28,6 +28,8 @@ class CreateUsersTable extends Migration
       $table->string('educational_attainment')->nullable();
       $table->string('confirmation_code')->nullable();
       $table->string('image')->nullable();
+      $table->string('degree')->nullable();
+      $table->string('address')->nullable();
       $table->timestamps();
     });
   }

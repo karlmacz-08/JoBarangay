@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Users;
+use App\Skills;
 
 class UserSeeder extends Seeder
 {
@@ -13,6 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        Skills::insert([
+            ['name' => 'Kasambahay'],
+            ['name' => ''],
+            ['name' => ''],
+            ['name' => ''],
+            ['name' => '']
+        ]);
+
         $user1 = new Users;
 
         $user1->mobile_number = '9068563348';

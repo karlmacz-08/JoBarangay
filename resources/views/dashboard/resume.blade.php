@@ -52,7 +52,7 @@
 									<label for="educ">Antas ng Edukasyon:</label>
 									<select class="custom-select" id="eduklvl" required>
 										<option selected value="0">...</option>
-										<option value="1" >Elementary</option>
+										<option value="1">Elementary</option>
 										<option value="2">Hayskul</option>
 										<option value="3">Kolehiyo</option>
 										<option value="4">Wala sa nabanggit</option>
@@ -61,7 +61,12 @@
 
 								<div class="form-group" id="degree">
 									<label for="deg">Tinapos na Kurso</label>
-									<input type="text" class="form-control" id="deg" placeholder="">
+									<input type="text" class="form-control" id="deg" placeholder="" value="{{ $user_info->degree }}">
+								</div>
+
+								<div class="form-group">
+									<label for="clearance">Clearance(s):</label>
+									<input id="clearance" class="form-control" type="text" name="clearance" value="">
 								</div>
 
 								<div class="form-group">

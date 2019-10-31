@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
       $table->string('company')->nullable();
       $table->string('educational_attainment')->nullable();
       $table->string('confirmation_code')->nullable();
+      $table->string('image')->nullable();
       $table->timestamps();
     });
   }

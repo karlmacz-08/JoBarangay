@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Auth;
+
 use App\Users;
 
 class DashboardController extends Controller
@@ -24,7 +27,17 @@ class DashboardController extends Controller
 
   public function matches()
   {
-    return view('dashboard.matches');
+    $users = null;
+    
+    if(Auth::user()->type === 'Applicant') {
+      $users = Users::where('type', 'Employer')->get();
+    } else if(Auth::user()->type === 'Employer') {
+      $users = Users::where('type', 'Applicant')->get();
+    }
+
+    return view('dashboard.matches', [
+      'users' => $users
+    ]);
   }
 
   public function resume()

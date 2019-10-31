@@ -17,6 +17,35 @@ class ApiController extends Controller
   /*
   * POST Requests
   */
+  public function post_user($id)
+  {
+    $user = Users::where('id', $id)->first();
+
+    $user->fn = $user->full_name();
+    $user->list1 = [];
+
+    if($user->skills->count() > 0) {
+      foreach($user->skills as $skill) {
+        $user->list1[] = $skill->skill->name;
+      }
+    }
+
+    if($user->type === 'Applicants') {
+      $user->list2 = [];
+
+      if($user->clearances->count() > 0) {
+        foreach($user->clearances as $clearance) {
+          $user->list2[] = $clearance;
+        }
+      }
+    }
+
+    return response()->json([
+      'status' => 'ok',
+      'data' => $user
+    ]);
+  }
+
   public function post_applicants(Request $request)
   {
     $id = $request->input('id');

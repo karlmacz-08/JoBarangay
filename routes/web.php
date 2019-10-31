@@ -19,4 +19,6 @@ Route::prefix('dashboard')->group(function() {
   Route::get('home', 'DashboardController@home')->name('dashboard.home');
   Route::get('matches', 'DashboardController@matches')->name('dashboard.matches');
   Route::get('resume', 'DashboardController@resume')->name('dashboard.resume');
+
+  Route::post('resume/update', 'DashboardController@post_update_resume')->name('dashboard.resume.update');
 });

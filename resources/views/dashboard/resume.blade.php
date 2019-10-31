@@ -20,7 +20,7 @@
 		<div class="dashboard-content-inner">
 			<div class="card">
 				<div class="container" style="margin-top: 20px">
-					<form>
+					<form action="{{ route('dashboard.resume.update') }}" method="POST">
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="form-group">
@@ -96,4 +96,8 @@
 
 @section('scripts')
 <script src="{{ asset('js/resume.js') }}"></script>
+<script>
+	$(document).ready(function() {
+	});
+</script>
 @endsection

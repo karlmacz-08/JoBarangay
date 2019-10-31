@@ -25,6 +25,7 @@ class Users extends Authenticatable
         'company',
         'educational_attainment',
         'sex',
+        'image'
     ];
 
     /**

@@ -21,6 +21,8 @@
 			<div class="card">
 				<div class="container" style="margin-top: 20px">
 					<form action="{{ route('dashboard.resume.update') }}" method="POST">
+						{{ csrf_field() }}
+						<input type="hidden" name="id" value="">
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="form-group">
@@ -46,7 +48,7 @@
 								<div class="form-group">
 									<label for="educ">Antas ng Edukasyon:</label>
 									<select class="custom-select" id="eduklvl">
-										<option selected value="0">...</option>
+										<option selected value="0">Mamili ng Item</option>
 										<option value="1" >Elementary</option>
 										<option value="2">Hayskul</option>
 										<option value="3">Kolehiyo</option>
@@ -65,7 +67,7 @@
 								</div>
 							</div>
 							<div class="col-sm-4">
-								<img class="img-thumbnail" src="{{ asset('images/avatar.png') }}" alt="Profile Picture">
+								<img id="upload-preview" class="img-thumbnail" src="{{ asset('images/avatar.png') }}" alt="Profile Picture">
 								<div id="upload-file" class="file has-name is-centered is-boxed" style="margin-top: 10px; margin-bottom: 40px">
 									<label class="file-label">
 										<input class="file-input" type="file" name="image">
@@ -98,6 +100,19 @@
 <script src="{{ asset('js/resume.js') }}"></script>
 <script>
 	$(document).ready(function() {
+		$('body').on('change', '.file-input[name="image"]', function() {
+			if($(this)[0].files && $(this)[0].files[0]) {
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					$('#upload-preview').attr('src', e.target.result);
+				}
+
+				reader.readAsDataURL($(this)[0].files[0]);
+			}
+
+			return false;
+		});
 	});
 </script>
 @endsection

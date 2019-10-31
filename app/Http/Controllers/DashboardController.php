@@ -28,7 +28,7 @@ class DashboardController extends Controller
   public function matches()
   {
     $users = null;
-    
+
     if(Auth::user()->type === 'Applicant') {
       $users = Users::where('type', 'Employer')->get();
     } else if(Auth::user()->type === 'Employer') {
@@ -43,5 +43,13 @@ class DashboardController extends Controller
   public function resume()
   {
     return view('dashboard.resume');
+  }
+
+  /*
+  * POST Requests
+  */
+  public function post_update_resume(Request $request)
+  {
+    $id = $request->input('id');
   }
 }

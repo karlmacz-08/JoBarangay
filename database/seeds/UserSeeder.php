@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user1->first_name = 'Karl';
         $user1->last_name = 'Macz';
         $user1->birth_date = '1996-03-08';
-        $user1->type = 'Administrator';
+        $user1->type = 'Employer';
         $user1->sex = 'Male';
 
         $user1->save();

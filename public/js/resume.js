@@ -1,10 +1,12 @@
 $(function() {
   $('#degree').hide();
+  $('#submit').attr('disabled', true);
   $('#eduklvl').on('change', function(e){
     var type = $('#eduklvl').val();
 
     if (type != '0') {
       $('#eduklvl option[value="0"]').hide();
+      $('#submit').removeAttr('disabled');
     }
 
     if (type == '3') {

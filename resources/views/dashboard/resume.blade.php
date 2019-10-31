@@ -20,32 +20,37 @@
 		<div class="dashboard-content-inner">
 			<div class="card">
 				<div class="container" style="margin-top: 20px">
-					<form>
+					<form method="POST" action="{{ route('dashboard.resume') }}">
 						<div class="row">
 							<div class="col-sm-8">
 								<div class="form-group">
 									<label for="name">Buong Pangalan:</label>
-									<input id="name" class="form-control" type="text" value="Eloquent" readonly>
+									<input id="name" class="form-control" type="text" value="{{ $user_info->last_name }}, {{ $user_info->first_name }} {{ $user_info->middle_name ?? '' }}" readonly>
 								</div>
 
 								<div class="form-group">
 									<label for="mobile">Cellphone Number:</label>
-									<input id="mobile" class="form-control" type="number" value="Eloquent" readonly>
+									<div class="input-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text">+63</span>
+										</div>
+										<input id="mobile" class="form-control" type="number" value="{{ $user_info->mobile_number }}" readonly>
+									</div>
 								</div>
 
 								<div class="form-group">
 									<label for="birth">Kaarawan:</label>
-									<input id="birth" class="form-control" type="text" value="Eloquent" readonly>
+									<input id="birth" class="form-control" type="text" value="{{ \Carbon\Carbon::parse($user_info->birth_date)->format('M d, Y') }}" readonly>
 								</div>
 
 								<div class="form-group">
 									<label for="add">Tirahan:</label>
-									<textarea id="add" class="form-control" name="address" cols="30" rows="2"></textarea>
+									<textarea id="add" class="form-control" name="address" cols="30" rows="2" required></textarea>
 								</div>
 
 								<div class="form-group">
 									<label for="educ">Antas ng Edukasyon:</label>
-									<select class="custom-select" id="eduklvl">
+									<select class="custom-select" id="eduklvl" required>
 										<option selected value="0">...</option>
 										<option value="1" >Elementary</option>
 										<option value="2">Hayskul</option>
@@ -82,8 +87,8 @@
 										</span>
 									</label>
 								</div>
-								<button class="btn btn-block btn-primary">Ipasa</button>
-								<a class="btn btn-block btn-danger" style="color: white">Kanselahin</a>
+								<button id="submit" type="submit" class="btn btn-block btn-primary">Ipasa</button>
+								<a id="cancel" class="btn btn-block btn-danger" style="color: white">Kanselahin</a>
 							</div>
 						</div>
 					</form>

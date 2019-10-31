@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Users;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -29,6 +30,11 @@ class DashboardController extends Controller
 
   public function resume()
   {
-    return view('dashboard.resume');
+    $id = auth()->user()->id;
+    $user_info = Users::find($id);
+
+    return view('dashboard.resume', [
+      'user_info' => $user_info,
+    ]);
   }
 }
